@@ -13,7 +13,7 @@ public struct LocaleInfo {
     public var phoneCode: String
     
     public var flag: UIImage? {
-        return UIImage(named: "Countries.bundle/Images/\(code.uppercased())", in: Bundle.main, compatibleWith: nil)
+        return UIImage(named: "Countries.bundle/Images/\(code.uppercased())", in: Bundle(for: BaseBundleClass.self), compatibleWith: nil)
     }
     
     public var currencyCode: String? {
@@ -36,4 +36,11 @@ public struct LocaleInfo {
         
         self.locale = Locale.availableIdentifiers.map { Locale(identifier: $0) }.first(where: { $0.regionCode == code })
     }
+}
+
+import Foundation
+
+@objc(BaseBundleClass)
+open class BaseBundleClass: NSObject {
+    
 }
